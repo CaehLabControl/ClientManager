@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Registro</title>
+        <script type="text/javascript" data-version="3.9.1" data-where="register" src="content/files-jq/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" data-where="register" src="content/files-js/oc-requiere-script.js"></script>
+    </head>
+    <body  class="login wp-core-ui">
+        <div id="login">
+            <table style="width:100%">
+                <tbody>
+                    <tr>
+                        <td align="center">
+                            <h1 style="font-size: 45px; color: #004a73;">Registro</h1>
+                        </td>
+                        <td align="right">                            
+                            <img width="100" src="content/pictures-system/logo.png" alt="Logo">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <form name="loginform" id="registerForm"  method="post">
+                <div style="display: none; height: 377px" id="windowBlock">
+                    <div id="WindowLoad"></div>
+                    <div id="loadingPicture"></div>
+                </div>  
+                <div style="padding: 26px 24px 10px;">
+                    <input type="hidden" name="action" value="insert">
+                    <p>
+                        <label for="user_name">Usuario<br>
+                            <input  name="user_name" id="user_name" class="input" size="20" type="text" placeholder="Nombre de usuario">
+                        </label>                    
+                    </p>
+                    <p>
+                        <label for="user_mail">Correo<br>
+                        <input name="user_mail" id="user_mail" class="input" size="20" type="text" placeholder="alguien@mail.com"></label>
+                    </p>
+                    <p>
+                        <label for="user_password">Contraseña<br>
+                        <input name="user_password" id="user_password" class="input" value="" size="20" type="password" placeholder="Contraseña"></label>
+                    </p>
+                    <p>
+                        <label for="same_password">Repetir contraseña<br>
+                        <input name="same_password" id="same_password" class="input" value="" size="20" type="password" placeholder="Repetir contraseña"></label>
+                    </p>
+                    <br>
+                    <p class="submit" style="text-align: center">
+                        <img id="adding" style="display: none" width="210" src="content/pictures-system/addUser.gif" alt=""/>
+                        <input name="button_register" type="submit" value="Registrar" id="buttonRegister" />
+                    </p>
+                    <br>
+                    <p style="text-align: left">
+                        <label><a href="login.jsp">Ir atras</a><br></label>
+                    </p>
+                </div>
+            </form>
+            <div class="clear"></div>
+        </div>
+    </body>
+</html>
