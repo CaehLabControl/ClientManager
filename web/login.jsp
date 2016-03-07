@@ -61,7 +61,8 @@
                             </div>
                         </div>
                     </form>                    
-                    <div class="clear" style="display: none; color: red; margin-left: 10px">Los datos ingresados no son correctos</div>
+                    <div class="clear" style="float: left; display: none; color: red; margin-left: 10px">Los datos ingresados no son correctos</div>
+                    <div style="margin-left: 10px; float: right; color: rgb(0, 74, 115);">Versión 1.0.0</div>
                 </div>
             </body>
         </html><%

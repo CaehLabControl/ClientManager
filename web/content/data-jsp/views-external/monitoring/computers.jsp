@@ -286,7 +286,7 @@
                     showemptyrow: false,
                     theme: "darkblue",
                     keyboardnavigation: false,
-                    selectionmode: 'none',
+                    selectionmode: 'multiplerowsextended',
                     columns: [
                       { text: 'Equipo', dataField: 'name', width: 150 },
                       { text: 'Quitar', dataField: 'remove' }

@@ -32,7 +32,7 @@
                 console.log("Click on this");
                 if(true){
                     if(true){
-                        if(socket.readyState==1){
+                        //if(socket.readyState==1){
                             $.ajax({
                                 url: "content/data-jsp/views-external/monitoring/computers.jsp",
                                 beforeSend: function (xhr) {
@@ -47,7 +47,7 @@
                                     alert("Error interno del servidor");   
                                 }
                             });
-                        }
+                        //}
                     }
                 }
             });
