@@ -96,9 +96,7 @@ public class aes {
         return str;
     }
     public static void main(String[] args) {
-
         aes sec = new aes();
-
         sec.addKey("2015");
         String texto = sec.encriptar("1");
         System.out.println( texto );

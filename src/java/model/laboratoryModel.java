@@ -1,21 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 /**
  *
  * @author CARLOS ANTONIO
  */
-public class laboratoryModel extends userModel{
-    int pk_laboratory = 0;
-    String fl_name="";
-    String fl_description="";
-    String fl_cant_computers="";
-    String fl_row_create_date="";
-    String fl_row_update_date="";
+public class laboratoryModel{
+    private int pk_laboratory = 0;
+    private String fl_name="";
+    private String fl_description="";
+    private String fl_cant_computers="";
+    private String fl_row_create_date="";
+    private String fl_row_update_date="";
+    private userModel um;
+
+    public laboratoryModel(userModel um) {
+        this.um = um;
+    }
 
     public int getPk_laboratory() {
         return pk_laboratory;
@@ -64,4 +64,13 @@ public class laboratoryModel extends userModel{
     public void setFl_row_update_date(String fl_row_update_date) {
         this.fl_row_update_date = fl_row_update_date;
     }
+
+    public userModel getUm() {
+        return um;
+    }
+
+    public void setUm(userModel um) {
+        this.um = um;
+    }
+    
 }

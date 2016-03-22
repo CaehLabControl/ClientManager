@@ -22,7 +22,7 @@
                     }
                 </style>
             </head>
-            <body class="default">
+            <body>
                 <div id="jqxWindowAbout">
                     <div>
                         <img style="width: 20px;" src="content/pictures-system/icon-popoper/about.png" alt="ad"/> 
@@ -67,37 +67,40 @@
                         </div>
                     </div>
                 </div>
-                <div id="splitter">
-                    <div>
-                        <div id='jqxExpanderMenu'>
-                            <div>Menu</div>
-                            <div>
-                                <div id="jqxNavigationBar">
-                                    <div>Control</div>
-                                    <div>
-                                        <div style="border: none;" data-rol="tree" id='jqxTree0'></div>
-                                    </div>
-                                    <div>Acciones</div>
-                                    <div>
-                                        <div style="border: none;" data-rol="tree" id='jqxTree1'></div>
-                                    </div>
-                                    <div>General</div>
-                                    <div>
-                                        <div style="border: none;" data-rol="tree" id='jqxTree2'></div>
-                                    </div>
-                                </div> 
+                <div id="jqxWidgetBody">
+                    <div id="jqxSplitterPrincipal" style="background: #00a2e8">
+                        <div id="ContentMenu">
+                            <div id='jqxExpanderMenu'>
+                                <div>Menu</div>
+                                <div>
+                                    <div id="jqxNavigationBar">
+                                        <div>Control</div>
+                                        <div>
+                                            <div style="border: none;" data-rol="tree" id='jqxTree0'></div>
+                                        </div>
+                                        <div>Acciones</div>
+                                        <div>
+                                            <div style="border: none;" data-rol="tree" id='jqxTree1'></div>
+                                        </div>
+                                        <div>General</div>
+                                        <div>
+                                            <div style="border: none;" data-rol="tree" id='jqxTree2'></div>
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div>   
+                        </div>
+                        <div id="ContentPanel">
+                            <div id='jqxExpanderContent'>
+                                <div id="taskBar">
+                                    <span>Tarea</span>                    
+                                </div>
+                                <div id="loadContent"></div>
                             </div>
-                        </div>   
-                    </div>
-                    <div id="ContentPanel">
-                        <div id='jqxExpanderContent'>
-                            <div id="taskBar">
-                                <span>Tarea</span>                    
-                            </div>
-                            <div id="loadContent"></div>
                         </div>
                     </div>
                 </div>
+                
                 <div id='jqxWidgetFooter'>
                     <div style="padding-left: 15px; float: left; color: rgb(0, 74, 115);">Todos los derechos reservados 2015</div>
                     <div style="margin-left: 10px; float: right; color: rgb(0, 74, 115);">Versión 1.0.0</div>

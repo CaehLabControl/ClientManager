@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.laboratoryModel;
 import model.menuModel;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -41,8 +40,6 @@ public class menuServices extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             if(request.getParameter("view")!=null){
-                JSONArray principal = new JSONArray();                
-                JSONObject settings = new JSONObject();
                 HttpSession session = request.getSession();  
                 int pk_user = 0;
                 if(session.getAttribute("pk_user")!=null){
@@ -58,7 +55,7 @@ public class menuServices extends HttpServlet {
                             JSONObject data = new JSONObject();
                             data.put("id", list2.getPk_item_menu());
                             data.put("parentid", list2.getFk_item_parent());
-                            data.put("text", list2.getFl_text());
+                            data.put("text", "<span data-indextree='"+list1.getFl_section()+"'>"+list2.getFl_text()+"</span>");
                             data.put("icon", list2.getFl_icon());
                             data.put("expanded", list2.getFl_expanded());
                             principal2.add(data);
@@ -87,7 +84,8 @@ public class menuServices extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+//        processRequest(request, response);
+        response.sendRedirect("");
     }
 
     /**

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 /**
@@ -10,18 +5,18 @@ package model;
  * @author CARLOS ANTONIO
  */
 public class userModel {
-    int pk_user=0;
-    String fl_date_created_acount="";
-    String fl_user_name="";
-    String fl_password="";
-    String fl_mail="";
-    String fl_mail_validated="";
-    String fl_real_name="";
-    String fl_patern_name="";
-    String fl_matern_name="";
-    String fl_status_acount="";
-    String fl_key_request_new_password="";
-    int fl_password_changed_count=0;
+    private int pk_user=0;
+    private String fl_date_created_acount="";
+    private String fl_user_name="";
+    private String fl_password="";
+    private String fl_mail="";
+    private String fl_mail_validated="";
+    private String fl_real_name="";
+    private String fl_patern_name="";
+    private String fl_matern_name="";
+    private String fl_status_acount="";
+    private String fl_key_request_new_password="";
+    private int fl_password_changed_count=0;
 
     public int getPk_user() {
         return pk_user;

@@ -17,10 +17,10 @@ jQuery.getCSS = function( href, media, callback ) {
         rel: 'stylesheet'
     }).on("error", callback).appendTo('head');
 };
-var theme = "darkblue";
+var theme = "light";
 var requiere = {
     init: function (action){
-        var version = $("script").attr("data-version") || "3.9.1";
+        var version =  "4.0.0";
         window.location.hash="";
         window.location.hash=""; //chrome
         window.onhashchange=function(){window.location.hash="";};
@@ -51,7 +51,6 @@ var requiere = {
             case "index":
                 $.getCSS("content/files-jq/jqwidgets-ver"+version+"/jqwidgets/styles/jqx.base.css"); 
                 $.getCSS("content/files-jq/jqwidgets-ver"+version+"/jqwidgets/styles/jqx."+theme+".css");
-                $.getCSS("content/files-jq/jqwidgets-ver"+version+"/jqwidgets/styles/jqx.arctic.css");
                 $.getScript("content/files-jq/jqwidgets-ver"+version+"/jqwidgets/jqxcore.js");
                 $.getScript("content/files-jq/jqwidgets-ver"+version+"/jqwidgets/jqxbuttons.js");
                 $.getScript("content/files-jq/jqwidgets-ver"+version+"/jqwidgets/jqxscrollbar.js");
@@ -65,6 +64,8 @@ var requiere = {
                 $.getScript("content/files-jq/jqwidgets-ver"+version+"/jqwidgets/jqxdata.js");
                 $.getScript("content/files-jq/jqwidgets-ver"+version+"/jqwidgets/jqxgrid.js");
                 $.getScript("content/files-jq/jqwidgets-ver"+version+"/jqwidgets/jqxgrid.columnsresize.js"); 
+                $.getScript("content/files-jq/jqwidgets-ver"+version+"/jqwidgets/jqxgrid.selection.js"); 
+                $.getScript("content/files-jq/jqwidgets-ver"+version+"/jqwidgets/jqxgrid.sort.js"); 
                 $.getScript("content/files-jq/jqwidgets-ver"+version+"/jqwidgets/jqxlistbox.js");
                 $.getScript("content/files-jq/jqwidgets-ver"+version+"/jqwidgets/jqxdropdownlist.js");
                 $.getScript("content/files-jq/jqwidgets-ver"+version+"/jqwidgets/jqxdragdrop.js");

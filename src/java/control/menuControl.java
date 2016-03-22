@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package control;
 
 import java.sql.Connection;
@@ -27,23 +22,31 @@ public class menuControl {
     }
     public ArrayList<menuModel>  selectItemsMenu(int pk_user, int pt_section){
         ArrayList<menuModel> list=new ArrayList<>();
-        String procedure="CALL `pto_get_items_menu`('allItemsMenu', "+pk_user+", "+pt_section+")";
+        String procedure="CALL `pto_get_items_menu`('allItemsMenu', ?, ?)";
         try {
-            try (Connection conn = new conectionControl().getConexion(); PreparedStatement ps = conn.prepareStatement(procedure); ResultSet res = ps.executeQuery()) {
-                while(res!=null&&res.next()){
-                    menuModel allData=new menuModel();
-                    allData.setPk_item_menu(res.getInt("pk_item_menu"));
-                    allData.setFk_item_parent(res.getInt("fk_item_parent"));
-                    allData.setFl_icon(res.getString("fl_icon"));
-                    allData.setFl_text(res.getString("fl_text"));
-                    allData.setFl_expanded(res.getString("fl_expanded"));
-                    allData.setFl_section(res.getInt("fl_section"));
-                    list.add(allData);
-                }
-                res.close();
-                ps.close();
-                conn.close();
+            Connection conn; 
+            PreparedStatement ps; 
+            ResultSet res;
+            conn = new connectionControl().getConnection();            
+            ps = conn.prepareStatement(procedure); 
+            ps.setInt(1, pk_user);
+            ps.setInt(2, pt_section);
+            res = ps.executeQuery();
+            while(res!=null&&res.next()){
+                menuModel allData=new menuModel();
+                allData.setPk_item_menu(res.getInt("pk_item_menu"));
+                allData.setFk_item_parent(res.getInt("fk_item_parent"));
+                allData.setFl_icon(res.getString("fl_icon"));
+                allData.setFl_text(res.getString("fl_text"));
+                allData.setFl_expanded(res.getString("fl_expanded"));
+                allData.setFl_section(res.getInt("fl_section"));
+                list.add(allData);
             }
+            if(res!=null){
+                res.close();
+            }
+            ps.close();
+            conn.close();
             return list;
         } catch (SQLException ex) {
             System.err.println(ex);
@@ -52,18 +55,25 @@ public class menuControl {
     }
     public ArrayList<menuModel>  groupItemsMenu(int pk_user){
         ArrayList<menuModel> list=new ArrayList<>();
-        String procedure="CALL `pto_get_items_menu`('groupBySection', "+pk_user+", null)";
+        String procedure="CALL `pto_get_items_menu`('groupBySection', ?, null)";
         try {
-            try (Connection conn = new conectionControl().getConexion(); PreparedStatement ps = conn.prepareStatement(procedure); ResultSet res = ps.executeQuery()) {
-                while(res!=null&&res.next()){
-                    menuModel allData=new menuModel();
-                    allData.setFl_section(res.getInt("fl_section"));
-                    list.add(allData);
-                }
-                res.close();
-                ps.close();
-                conn.close();
+            Connection conn; 
+            PreparedStatement ps; 
+            ResultSet res;
+            conn = new connectionControl().getConnection();            
+            ps = conn.prepareStatement(procedure); 
+            ps.setInt(1, pk_user);
+            res = ps.executeQuery();
+            while(res!=null&&res.next()){
+                menuModel allData=new menuModel();
+                allData.setFl_section(res.getInt("fl_section"));
+                list.add(allData);
             }
+            if(res!=null){
+                res.close();
+            }
+            ps.close();
+            conn.close();
             return list;
         } catch (SQLException ex) {
             System.err.println(ex);

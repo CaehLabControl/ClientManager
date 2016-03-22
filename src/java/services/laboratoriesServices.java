@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.laboratoryModel;
+import model.userModel;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -54,7 +55,7 @@ public class laboratoriesServices extends HttpServlet {
                     for (laboratoryModel list1 : list) {
                         JSONObject data = new JSONObject();
                         data.put("pk_laboratory", list1.getPk_laboratory());
-                        data.put("pk_user", list1.getPk_user());
+                        data.put("pk_user", list1.getUm().getPk_user());
                         data.put("fl_name", list1.getFl_name());
                         data.put("fl_description", list1.getFl_description());
                         data.put("fl_cant_computers", list1.getFl_cant_computers());
@@ -77,11 +78,35 @@ public class laboratoriesServices extends HttpServlet {
                 int pk_user;
                 if(session.getAttribute("pk_user")!=null){
                     pk_user = Integer.parseInt(session.getAttribute("pk_user").toString());
-                    laboratoryModel obj = new laboratoryModel();
+                    userModel uM = new userModel();
+                    laboratoryModel obj = new laboratoryModel(uM);                    
                     obj.setFl_name(request.getParameter("fl_name"));
                     obj.setFl_description(request.getParameter("fl_description"));
-                    obj.setPk_user(pk_user);
+                    uM.setPk_user(pk_user);
+                    obj.setUm(uM);
                     if(new laboratoryControl().addLaboratory(obj)){
+                        settings.put("response", "true");
+                    }else{
+                        settings.put("response", "false");
+                    }          
+                }else{
+                    settings.put("response", "sessionExpired");
+                }
+                response.setContentType("application/json");                 
+                out.print(settings);
+                out.flush(); 
+                out.close();
+            }
+            if(request.getParameter("updateLaboratory")!=null){
+                JSONObject settings = new JSONObject();
+                HttpSession session = request.getSession();  
+                if(session.getAttribute("pk_user")!=null){
+                    userModel uM = new userModel();
+                    laboratoryModel obj = new laboratoryModel(uM);
+                    obj.setFl_name(request.getParameter("fl_name"));
+                    obj.setFl_description(request.getParameter("fl_description"));
+                    obj.setPk_laboratory(Integer.parseInt(request.getParameter("pk_laboratory")));
+                    if(new laboratoryControl().updateLaboratory(obj)){
                         settings.put("response", "true");
                     }else{
                         settings.put("response", "false");
@@ -97,7 +122,8 @@ public class laboratoriesServices extends HttpServlet {
             }
             if(request.getParameter("deleteLaboratory")!=null){
                 JSONObject settings = new JSONObject();  
-                laboratoryModel obj = new laboratoryModel();
+                userModel uM = new userModel();
+                laboratoryModel obj = new laboratoryModel(uM);
                 obj.setPk_laboratory(Integer.parseInt(request.getParameter("pk_laboratory")));
                 if(new laboratoryControl().deleteLaboratory(obj)){
                     settings.put("response", "true");

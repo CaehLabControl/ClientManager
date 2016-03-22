@@ -52,6 +52,7 @@ function sendMessage(messageData, rolClient){
 //document.onselectstart=new Function ("return false");
 //if (window.sidebar){document.onmousedown=disableselect; document.onclick=reEnable;}
 var height = $(window).height()-116;
+var width = $(window).width()-2;
 // Create jqxTree
 var treeIndex = 0;
 var item;
@@ -73,7 +74,8 @@ function sourceTree(){
     };
     return source;
 }
-$(document).ready(function (){         
+$(document).ready(function (){       
+    $("body").width(width+2);
     var dataAdapter = new $.jqx.dataAdapter(sourceTree(), {
         loadComplete: function (records) {
             // get data records.
@@ -84,44 +86,55 @@ $(document).ready(function (){
             for(var i=0; i<length;i++){
                 var dataAdapterItems = new $.jqx.dataAdapter(data[i]);
                 dataAdapterItems.dataBind();
-                var recordsItems = dataAdapterItems.getRecordsHierarchy('id', 'parentid', 'items', [{ name: 'text', map: 'label', icon: 'icon'}]);
+                var recordsItems = dataAdapterItems.getRecordsHierarchy('id', 'parentid', 'items', [{expanded: false, name: 'text', map: 'label', icon: 'icon'}]);
                 $('#jqxTree'+i).jqxTree({
                     theme: theme,  
-                    height: 430, 
+                    height: height-157, 
                     width: "100%", 
                     source: recordsItems 
                 }); 
+                
             }
+            
         },
         loadError: function (jqXHR, status, error) {
         },
         beforeLoadComplete: function (records) {
+            $('[data-rol="tree"]').jqxTree('collapseAll');
         }
     });
     // perform Data Binding.
     dataAdapter.dataBind();
                 
     $("#jqxNavigationBar").jqxNavigationBar({  
-        height: height-30, 
         width: "100%", 
         expandMode: "toggle",//"singleFitHeight",
         theme : theme,
         expandedIndexes: sessionStorage.getItem("expandedItem") || [0]
     });
+    var resize=true;
     $('#jqxNavigationBar').on('expandedItem', function (event){
         var expandedItem = event.args.item; 
-        sessionStorage.setItem("expandedItem",expandedItem);
+        sessionStorage.setItem("expandedItem",expandedItem);        
+        if(resize){
+            $('[data-rol="tree"]').jqxTree('expandAll');
+        }
+        $('[data-rol="tree"]').jqxTree('selectItem', null);
+        var items = $('#jqxTree'+expandedItem).jqxTree('getItems');
+        $('#jqxTree'+expandedItem).jqxTree('selectItem', items[0]);
     });        
-    
     $('[data-rol="tree"]').on('select', function (event) {
-        //$(this).jqxTree('selectItem', null);
-        args = event.args;
+        args = event.args;        
         item = $(this).jqxTree('getItem', args.element);
         var label = item.label; 
-        console.log(item)
-        sessionStorage.setItem("selectedItem",item);
+        sessionStorage.setItem("selectedItemId",item.id);
+        sessionStorage.setItem("selectedItemParentId",item.parentId);
+        var treeIndex = $(label).attr("data-indextree");
+        sessionStorage.setItem("treeIndex",("#jqxTree"+treeIndex));
         $(".external").empty();
         $(".external").remove();
+        label=$(label).text();
+        eventResize();
         if(label==="Lab3"){
             $("#loadContent").load("content/data-jsp/views-external/monitoring/monitoring.jsp");
         }
@@ -146,14 +159,29 @@ $(document).ready(function (){
             $("#loadContent").html("<div style='margin: 10px;'>" + label + "</div>");
         }
     });
+    $('[data-rol="tree"]').jqxTree('expandAll');
+    $(sessionStorage.getItem("treeIndex") || "#jqxTree0").jqxTree('selectItem', ($("#"+sessionStorage.getItem("selectedItemId"))[0] || null));
+    
     $("#jqxWidgetHeader").jqxPanel({ width: 'auto', height: 90});
-    $("#splitter").jqxSplitter({
-        theme:theme,  
-        width: "auto", 
-        height: height, 
-        panels: [{ size: 200 }],
+    $("#jqxWidgetBody").jqxPanel({ width: 'auto', height: height, autoUpdate:true});
+    $("#jqxSplitterPrincipal").jqxSplitter({
+        theme: theme,  
+        width: width, 
+        height: "100%", 
+        panels: [{ size: sessionStorage.getItem("sizeMenuPanel1")||200 }],
         splitBarSize: 2
-    });
+    }).css("border", "none");
+    function eventResize(){
+        $('#jqxSplitterPrincipal').off("resize");
+        $('#jqxSplitterPrincipal').on('resize', function (event) { 
+            var principalPanels = $('#jqxSplitterPrincipal').jqxSplitter('panels');
+            // get first panel.
+            var panelPrincipal1 = principalPanels[0];
+            // get second panel.
+            var panelPrincipal2 = principalPanels[1];
+            sessionStorage.setItem("sizeMenuPanel1", panelPrincipal1.size);
+        });
+    }
     $("#jqxExpanderMenu").jqxExpander({
         theme:theme, 
         width: 'auto', 
@@ -169,13 +197,6 @@ $(document).ready(function (){
         toggleMode: "none"
     });
     $("#jqxWidgetFooter").jqxPanel({ width: 'auto', height: 20});
-    $(window).resize(function (){
-        height = $(window).height()-116;
-        $("#splitter").jqxSplitter({height: height});
-        $("#jqxExpanderMenu").jqxExpander({height: height});
-        $("#jqxExpanderContent").jqxExpander({height: height});
-        $("#jqxNavigationBar").jqxNavigationBar({height: height-30}); 
-    });
     $("#buttonArrow").jqxButton({ width: "auto", height: 20});
     $("#popover").jqxPopover({
         offset: {left: -10, top:0}, 
@@ -192,7 +213,7 @@ $(document).ready(function (){
         width: '160px', 
         height: 'auto', 
         mode: 'vertical',
-        theme : 'arctic'
+        theme : theme
     });                    
     $("#jqxMenu").css('visibility', 'visible');
     $(".jqx-popover-content").css('padding','0px');
