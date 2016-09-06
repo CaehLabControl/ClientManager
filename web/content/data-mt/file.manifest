@@ -1,0 +1,21 @@
+CACHE MANIFEST
+#V2 09/07/20163
+CACHE:
+    /ClientManagerForce/content/files-jq/jquery-2.1.4.min.js
+    /ClientManagerForce/content/files-js/oc-requiere-script.js
+    /ClientManagerForce/content/pictures-system/logo.png
+    /ClientManagerForce/content/files-css/colors-fresh.css
+    /ClientManagerForce/content/files-css/buttons.css
+    /ClientManagerForce/content/files-css/wp-admin.css
+    /ClientManagerForce/content/files-jq/jqwidgets-ver4.0.0/jqwidgets/styles/jqx.base.css
+    /ClientManagerForce/content/files-jq/jqwidgets-ver4.0.0/jqwidgets/styles/jqx.light.css
+
+    /ClientManagerForce/content/files-jq/jqwidgets-ver4.0.0/jqwidgets/jqxcore.js
+    /ClientManagerForce/content/files-jq/jqwidgets-ver4.0.0/jqwidgets/jqxloader.js
+    /ClientManagerForce/content/files-jq/jqwidgets-ver4.0.0/jqwidgets/jqxbuttons.js
+    /ClientManagerForce/content/files-jq/jqwidgets-ver4.0.0/jqwidgets/jqxpopover.js
+    /ClientManagerForce/content/files-jq/jqwidgets-ver4.0.0/jqwidgets/jqxtooltip.js
+    /ClientManagerForce/content/files-jq/jqwidgets-ver4.0.0/jqwidgets/jqxpasswordinput.js
+    /ClientManagerForce/content/files-jq/jqwidgets-ver4.0.0/jqwidgets/jqxvalidator.js
+    /ClientManagerForce/content/files-js/login.js
+NETWORK:

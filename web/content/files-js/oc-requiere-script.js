@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 jQuery.getScript = function( src, callback ) {
+    console.log(src)
     jQuery( document.createElement('script') ).attr({
         src: src,
         type: 'text/javascript'

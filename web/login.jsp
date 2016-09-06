@@ -7,12 +7,13 @@
     String versionjqwidgets="jqwidgets-ver3.9.1";
     if(session.getAttribute("fl_user_name") == null){%>
         <!DOCTYPE html>
-        <html lang="en-US">
+        <html manifest="content/data-mt/file.manifest2">
             <head>
-                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                <meta http-equiv="Content-Type" content="text/cache-manifest; charset=UTF-8">
                 <title>Login</title>
                 <script type="text/javascript" data-version="3.9.1" data-where="login" src="content/files-jq/jquery-2.1.4.min.js"></script>
                 <script type="text/javascript" data-where="login" src="content/files-js/oc-requiere-script.js"></script>
+                <script type="text/javascript" src="content/files-js/login.js"></script>
             </head>
             <body class="login wp-core-ui">
                 <div id="login">

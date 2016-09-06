@@ -5,7 +5,6 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<meta http-equiv="Pragma" content="no-cache">
 <script type="text/javascript" class="external">
     $(document).ready(function () {
         var index = 0;
@@ -93,31 +92,31 @@
             panels: [{ size: sessionStorage.getItem("sizeLaboratoriesPanel1") || 750 }],
             splitBarSize: 1
         });
-        if((principalPanels[0].element[0].clientWidth)<=215){
-            $("#panelSubLoadComputers").jqxPanel({width: (principalPanels[1].element[0].clientWidth)});
-            $("#jqxSplitterComputers").jqxSplitter({width: (principalPanels[1].element[0].clientWidth)-6}); 
-        }
-        $('#jqxSplitterPrincipal').off('resize');
-        $('#jqxSplitterPrincipal').on('resize', function (event) { 
-            principalPanels = $('#jqxSplitterPrincipal').jqxSplitter('panels');
-            
-            // get first panel.
-            var panelPrincipal1 = principalPanels[0];
-            // get second panel.
-            var panelPrincipal2 = principalPanels[1];
-            if((panelPrincipal1.element[0].clientWidth)<=215){
-                $("#panelSubLoadComputers").jqxPanel({width: (panelPrincipal2.element[0].clientWidth)});
-                $("#jqxSplitterComputers").jqxSplitter({width: (panelPrincipal2.element[0].clientWidth)-6});
-            }else{
-                $("#panelSubLoadComputers").jqxPanel({width: (panelPrincipal2.element[0].clientWidth)-4});
-                $("#jqxSplitterComputers").jqxSplitter({width: 1150});
-            }
-            laboratoriesPanels = $('#jqxSplitterComputers').jqxSplitter('panels');
-            var palelLaboraroties1 = laboratoriesPanels[0];
-            var palelLaboraroties2 = laboratoriesPanels[1];
-            $(".header-details-computers").width((palelLaboraroties2.element[0].clientWidth)-2);
-            $("#panelItemsDetailsComputers").jqxPanel({width: (palelLaboraroties2.element[0].clientWidth)-2});
-        });
+//        if((principalPanels[0].element[0].clientWidth)<=215){
+//            $("#panelSubLoadComputers").jqxPanel({width: (principalPanels[1].element[0].clientWidth)});
+//            $("#jqxSplitterComputers").jqxSplitter({width: (principalPanels[1].element[0].clientWidth)-6}); 
+//        }
+//        $('#jqxSplitterPrincipal').off('resize');
+//        $('#jqxSplitterPrincipal').on('resize', function (event) { 
+//            principalPanels = $('#jqxSplitterPrincipal').jqxSplitter('panels');
+//            
+//            // get first panel.
+//            var panelPrincipal1 = principalPanels[0];
+//            // get second panel.
+//            var panelPrincipal2 = principalPanels[1];
+//            if((panelPrincipal1.element[0].clientWidth)<=215){
+//                $("#panelSubLoadComputers").jqxPanel({width: (panelPrincipal2.element[0].clientWidth)});
+//                $("#jqxSplitterComputers").jqxSplitter({width: (panelPrincipal2.element[0].clientWidth)-6});
+//            }else{
+//                $("#panelSubLoadComputers").jqxPanel({width: (panelPrincipal2.element[0].clientWidth)-4});
+//                $("#jqxSplitterComputers").jqxSplitter({width: 1150});
+//            }
+//            laboratoriesPanels = $('#jqxSplitterComputers').jqxSplitter('panels');
+//            var palelLaboraroties1 = laboratoriesPanels[0];
+//            var palelLaboraroties2 = laboratoriesPanels[1];
+//            $(".header-details-computers").width((palelLaboraroties2.element[0].clientWidth)-2);
+//            $("#panelItemsDetailsComputers").jqxPanel({width: (palelLaboraroties2.element[0].clientWidth)-2});
+//        });
         $("#jqxWindowItemComputers").jqxWindow({
             theme: theme, 
             //okButton: $('#okItemComputers'),
@@ -159,7 +158,7 @@
                         $.ajax({
                             async: true,
                             type: "POST",
-                            url: "laboratoriesServices?"+param,
+                            url: "LaboratoriesService?"+param,
                             data: datas,
                             dataType: 'json',
                             beforeSend: function (xhr) {
@@ -211,7 +210,7 @@
                     $.ajax({
                         async: true,
                         type: "POST",
-                        url: "laboratoriesServices?deleteLaboratory",
+                        url: "LaboratoriesService?deleteLaboratory",
                         data: {
                             "pk_computer":datarecord.pk_computer
                         },
@@ -233,23 +232,23 @@
                 });
             }
         });
-        $('#jqxSplitterComputers').off('collapsed');
-        $('#jqxSplitterComputers').on('collapsed', function (event) {       
-            $('#jqxSplitterComputers').jqxSplitter('expand');
-        });
-        $('#jqxSplitterComputers').off('resize');
-        $('#jqxSplitterComputers').on('resize', function (event) {  
-            var laboratoriesPanels = event.args.panels;
-            // get first panel.
-            var laboratoriesPanel1 = laboratoriesPanels[0];
-            var laboratoriesPanel2 = laboratoriesPanels[1];
-            $("#jqxGridItemsComputers").jqxGrid({width: laboratoriesPanel1.size-30});
-            // get second panel.
-            sessionStorage.setItem("sizeLaboratoriesPanel1", laboratoriesPanel1.size);
-            console.log(laboratoriesPanels);
-            $("#panelItemsDetailsComputers").jqxPanel({width: laboratoriesPanel2.size || 200});
-            $(".header-details-computers").width(laboratoriesPanel2.size);
-        });
+//        $('#jqxSplitterComputers').off('collapsed');
+//        $('#jqxSplitterComputers').on('collapsed', function (event) {       
+//            $('#jqxSplitterComputers').jqxSplitter('expand');
+//        });
+//        $('#jqxSplitterComputers').off('resize');
+//        $('#jqxSplitterComputers').on('resize', function (event) {  
+//            var laboratoriesPanels = event.args.panels;
+//            // get first panel.
+//            var laboratoriesPanel1 = laboratoriesPanels[0];
+//            var laboratoriesPanel2 = laboratoriesPanels[1];
+//            $("#jqxGridItemsComputers").jqxGrid({width: laboratoriesPanel1.size-30});
+//            // get second panel.
+//            sessionStorage.setItem("sizeLaboratoriesPanel1", laboratoriesPanel1.size);
+//            console.log(laboratoriesPanels);
+//            $("#panelItemsDetailsComputers").jqxPanel({width: laboratoriesPanel2.size || 200});
+//            $(".header-details-computers").width(laboratoriesPanel2.size);
+//        });
         var laboratoriesPanels = $('#jqxSplitterComputers').jqxSplitter('panels');
         var laboratoriesPanel2 = laboratoriesPanels[1];
         $("#panelItemsDetailsComputers").jqxPanel({
@@ -285,7 +284,7 @@
                 root: "response",
                 id: 'pk_computer',                
                 type: "POST",
-                url: "laboratoriesServices",
+                url: "LaboratoriesService",
                 data : {
                     "selectLaboratoriesByUser":"",
                     "pt_order": order || "",
@@ -536,7 +535,7 @@
                 <div id='jqxContextMenuItemsComputers'>
                     <style>
                         .jqx-menu li, .jqx-popup li{
-                            //padding-left: 20px;
+                            /*padding-left: 20px;*/
                         }
                     </style>
                     <ul>

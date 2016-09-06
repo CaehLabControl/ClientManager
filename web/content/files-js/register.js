@@ -45,7 +45,7 @@ $(document).ready(function (){
                         $.ajax({
                             async: false,
                             type: "POST",
-                            url: "userServices",
+                            url: "UsersService",
                             data:{
                                 "mailValidate" : "",
                                 "pt_mail" : input.val()
@@ -100,7 +100,7 @@ $(document).ready(function (){
                     $.ajax({
                         async: true,
                         type: "POST",
-                        url: "userServices",
+                        url: "UsersService",
                         data: form.serialize(),
                         dataType: 'json',
                         beforeSend: function (xhr) {
@@ -298,7 +298,7 @@ $(document).ready(function (){
             $.ajax({
                 async: false,
                 type: "POST",
-                url: "userServices",
+                url: "UsersService",
                 data:{
                     "userValidate" : "",
                     "pt_user" : input.val()

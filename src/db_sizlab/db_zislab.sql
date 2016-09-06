@@ -1,19 +1,20 @@
 -- --------------------------------------------------------
--- Host:                         127.0.0.1
--- Versión del servidor:         5.6.17 - MySQL Community Server (GPL)
+-- Host:                         localhost
+-- Versión del servidor:         5.7.9 - MySQL Community Server (GPL)
 -- SO del servidor:              Win64
--- HeidiSQL Versión:             9.3.0.4984
+-- HeidiSQL Versión:             9.3.0.5095
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
 
 -- Volcando estructura de base de datos para db_sizlab
 CREATE DATABASE IF NOT EXISTS `db_sizlab` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci */;
 USE `db_sizlab`;
-
 
 -- Volcando estructura para procedimiento db_sizlab.pto_get_computer
 DROP PROCEDURE IF EXISTS `pto_get_computer`;
@@ -23,7 +24,6 @@ BEGIN
 
 END//
 DELIMITER ;
-
 
 -- Volcando estructura para procedimiento db_sizlab.pto_get_items_menu
 DROP PROCEDURE IF EXISTS `pto_get_items_menu`;
@@ -59,7 +59,6 @@ BEGIN
 END//
 DELIMITER ;
 
-
 -- Volcando estructura para procedimiento db_sizlab.pto_get_laboratory
 DROP PROCEDURE IF EXISTS `pto_get_laboratory`;
 DELIMITER //
@@ -86,7 +85,6 @@ BEGIN
 	END CASE;
 END//
 DELIMITER ;
-
 
 -- Volcando estructura para procedimiento db_sizlab.pto_get_login
 DROP PROCEDURE IF EXISTS `pto_get_login`;
@@ -136,7 +134,6 @@ BEGIN
 END//
 DELIMITER ;
 
-
 -- Volcando estructura para procedimiento db_sizlab.pto_get_user
 DROP PROCEDURE IF EXISTS `pto_get_user`;
 DELIMITER //
@@ -164,7 +161,6 @@ BEGIN
 	END CASE;	
 END//
 DELIMITER ;
-
 
 -- Volcando estructura para procedimiento db_sizlab.pto_set_computer
 DROP PROCEDURE IF EXISTS `pto_set_computer`;
@@ -199,7 +195,6 @@ BEGIN
 END//
 DELIMITER ;
 
-
 -- Volcando estructura para procedimiento db_sizlab.pto_set_laboratory
 DROP PROCEDURE IF EXISTS `pto_set_laboratory`;
 DELIMITER //
@@ -232,7 +227,6 @@ BEGIN
 	END CASE;
 END//
 DELIMITER ;
-
 
 -- Volcando estructura para procedimiento db_sizlab.pto_set_user
 DROP PROCEDURE IF EXISTS `pto_set_user`;
@@ -336,7 +330,6 @@ BEGIN
 END//
 DELIMITER ;
 
-
 -- Volcando estructura para tabla db_sizlab.tb_computers
 DROP TABLE IF EXISTS `tb_computers`;
 CREATE TABLE IF NOT EXISTS `tb_computers` (
@@ -349,9 +342,9 @@ CREATE TABLE IF NOT EXISTS `tb_computers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- Volcando datos para la tabla db_sizlab.tb_computers: ~0 rows (aproximadamente)
+DELETE FROM `tb_computers`;
 /*!40000 ALTER TABLE `tb_computers` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tb_computers` ENABLE KEYS */;
-
 
 -- Volcando estructura para tabla db_sizlab.tb_items_menu
 DROP TABLE IF EXISTS `tb_items_menu`;
@@ -363,11 +356,12 @@ CREATE TABLE IF NOT EXISTS `tb_items_menu` (
   `fl_expanded` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `fl_section` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`pk_item_menu`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
--- Volcando datos para la tabla db_sizlab.tb_items_menu: ~25 rows (aproximadamente)
+-- Volcando datos para la tabla db_sizlab.tb_items_menu: ~15 rows (aproximadamente)
+DELETE FROM `tb_items_menu`;
 /*!40000 ALTER TABLE `tb_items_menu` DISABLE KEYS */;
-REPLACE INTO `tb_items_menu` (`pk_item_menu`, `fl_icon`, `fk_item_parent`, `fl_text`, `fl_expanded`, `fl_section`) VALUES
+INSERT INTO `tb_items_menu` (`pk_item_menu`, `fl_icon`, `fk_item_parent`, `fl_text`, `fl_expanded`, `fl_section`) VALUES
 	(1, 'content/pictures-system/icon-menu/computer.png', -1, 'Operaciones', 'true', 0),
 	(2, 'content/pictures-system/icon-menu/monitoring.png', 1, 'Monitorear', '', 0),
 	(3, 'content/pictures-system/icon-menu/services.png', 1, 'Servicios', '', 0),
@@ -381,23 +375,8 @@ REPLACE INTO `tb_items_menu` (`pk_item_menu`, `fl_icon`, `fk_item_parent`, `fl_t
 	(11, 'content/pictures-system/icon-menu/note.png', 9, 'Notas', '', 2),
 	(12, 'content/pictures-system/icon-menu/settings.png', 9, 'Configuraciones', '', 2),
 	(13, 'content/pictures-system/icon-menu/user-acount.png', 9, 'Ajustes', '', 2),
-	(15, 'content/pictures-system/icon-menu/monitoring.png', 2, 'd', '', 0),
-	(16, 'content/pictures-system/icon-menu/settings.png', 9, 'Configuraciones', '', 2),
-	(17, 'content/pictures-system/icon-menu/settings.png', 9, 'Configuraciones', '', 2),
-	(18, 'content/pictures-system/icon-menu/settings.png', 9, 'Configuraciones', '', 2),
-	(19, 'content/pictures-system/icon-menu/settings.png', 9, 'Configuraciones', '', 2),
-	(20, 'content/pictures-system/icon-menu/settings.png', 9, 'Configuraciones', '', 2),
-	(21, 'content/pictures-system/icon-menu/settings.png', 9, 'Configuraciones', '', 2),
-	(22, 'content/pictures-system/icon-menu/settings.png', 9, 'Configuraciones', '', 2),
-	(23, 'content/pictures-system/icon-menu/settings.png', 9, 'Configuraciones', '', 2),
-	(24, 'content/pictures-system/icon-menu/settings.png', 9, 'Configuraciones', '', 2),
-	(25, 'content/pictures-system/icon-menu/settings.png', 9, 'Configuraciones', '', 2),
-	(26, 'content/pictures-system/icon-menu/settings.png', 9, 'Configuraciones', '', 2),
-	(27, 'content/pictures-system/icon-menu/settings.png', 9, 'Configuraciones', '', 2),
-	(28, 'content/pictures-system/icon-menu/settings.png', 9, 'Configuraciones', '', 2),
-	(29, 'content/pictures-system/icon-menu/settings.png', 9, 'Configuraciones', '', 2);
+	(15, 'content/pictures-system/icon-menu/monitoring.png', 2, 'd', '', 0);
 /*!40000 ALTER TABLE `tb_items_menu` ENABLE KEYS */;
-
 
 -- Volcando estructura para tabla db_sizlab.tb_laboratories
 DROP TABLE IF EXISTS `tb_laboratories`;
@@ -412,18 +391,18 @@ CREATE TABLE IF NOT EXISTS `tb_laboratories` (
   PRIMARY KEY (`pk_laboratory`),
   KEY `fk_tb_laboratories_tb_users` (`fk_user`),
   CONSTRAINT `fk_tb_laboratories_tb_users` FOREIGN KEY (`fk_user`) REFERENCES `tb_users` (`pk_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=178 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=179 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- Volcando datos para la tabla db_sizlab.tb_laboratories: ~5 rows (aproximadamente)
+DELETE FROM `tb_laboratories`;
 /*!40000 ALTER TABLE `tb_laboratories` DISABLE KEYS */;
-REPLACE INTO `tb_laboratories` (`pk_laboratory`, `fl_name`, `fl_description`, `fl_cant_computers`, `fl_row_create_date`, `fl_row_update_date`, `fk_user`) VALUES
+INSERT INTO `tb_laboratories` (`pk_laboratory`, `fl_name`, `fl_description`, `fl_cant_computers`, `fl_row_create_date`, `fl_row_update_date`, `fk_user`) VALUES
 	(4, 'nombre', 'desc', 0, '2016-03-06 11:54:27', '2016-03-06 12:00:45', NULL),
-	(173, 'LAB1fgkjlkytyuyiuoiiouiyutyuyi', '', 0, '2016-03-12 11:24:12', '2016-03-12 11:39:36', 20),
-	(174, 'la1', '', 0, '2016-03-12 11:41:15', '2016-03-12 11:41:15', 20),
-	(176, 'lab1 (2)', '', 0, '2016-03-12 11:42:28', '2016-03-12 11:42:28', 20),
-	(177, 'lab1 (2)', '', 0, '2016-03-12 11:43:02', '2016-03-12 11:43:02', 20);
+	(173, 'LAB1', '', 0, '2016-03-12 11:24:12', '2016-06-06 17:11:02', 20),
+	(174, 'LAB2', '', 0, '2016-03-12 11:41:15', '2016-06-06 17:11:13', 20),
+	(176, 'LAB3', '', 0, '2016-03-12 11:42:28', '2016-06-06 17:11:37', 20),
+	(178, 'LB4E', 'HOLAKK', 0, '2016-07-08 21:32:29', '2016-07-08 21:33:41', 20);
 /*!40000 ALTER TABLE `tb_laboratories` ENABLE KEYS */;
-
 
 -- Volcando estructura para tabla db_sizlab.tb_users
 DROP TABLE IF EXISTS `tb_users`;
@@ -445,12 +424,12 @@ CREATE TABLE IF NOT EXISTS `tb_users` (
   UNIQUE KEY `fl_mail` (`fl_mail`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
--- Volcando datos para la tabla db_sizlab.tb_users: ~1 rows (aproximadamente)
+-- Volcando datos para la tabla db_sizlab.tb_users: ~0 rows (aproximadamente)
+DELETE FROM `tb_users`;
 /*!40000 ALTER TABLE `tb_users` DISABLE KEYS */;
-REPLACE INTO `tb_users` (`pk_user`, `fl_date_created_acount`, `fl_user_name`, `fl_password`, `fl_mail`, `fl_mail_validated`, `fl_real_name`, `fl_patern_name`, `fl_matern_name`, `fl_status_acount`, `fl_key_request_new_password`, `fl_password_changed_count`) VALUES
+INSERT INTO `tb_users` (`pk_user`, `fl_date_created_acount`, `fl_user_name`, `fl_password`, `fl_mail`, `fl_mail_validated`, `fl_real_name`, `fl_patern_name`, `fl_matern_name`, `fl_status_acount`, `fl_key_request_new_password`, `fl_password_changed_count`) VALUES
 	(20, '2016-02-28 08:46:43', 'carlos', _binary 0xF6E0C8A5337B5AA023738343B1A62E21, 'karlos.antoni-1994@hotmail.com', 'karlos.antoni-1994@hotmail.com', '', NULL, NULL, 1, NULL, 0);
 /*!40000 ALTER TABLE `tb_users` ENABLE KEYS */;
-
 
 -- Volcando estructura para disparador db_sizlab.tb_laboratories_before_insert
 DROP TRIGGER IF EXISTS `tb_laboratories_before_insert`;
@@ -472,6 +451,7 @@ CREATE TRIGGER `tb_laboratories_before_insert` BEFORE INSERT ON `tb_laboratories
 END//
 DELIMITER ;
 SET SQL_MODE=@OLDTMP_SQL_MODE;
+
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

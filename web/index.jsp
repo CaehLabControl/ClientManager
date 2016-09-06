@@ -6,7 +6,7 @@
 <%
     if(session.getAttribute("fl_user_name") != null){%>
         <!DOCTYPE html>
-        <html lang="en">
+        <html  manifest="file.manifest">
             <head>
                 <title id="Description">Client Lab Manager</title>
                 <script type="text/javascript"  data-where="index" src="content/files-jq/jquery-2.1.4.min.js"></script>

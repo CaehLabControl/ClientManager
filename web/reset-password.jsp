@@ -1,9 +1,9 @@
-<%@page import="control.userControl"%>
-<%@page import="model.userModel"%>
-<%@page import="control.aes"%>
+<%@page import="mx.app.src.mysql.model.UsersModel"%>
+<%@page import="mx.app.src.mysql.control.UsersControl"%>
+<%@page import="mx.app.src.dao.extend.aes"%>
 <%
     String statusResetPassword="";
-    userModel obj = new userModel();
+    UsersModel obj = new UsersModel();
     if(request.getParameter("rp")!=null){
         aes sec = new aes();
         sec.addKey("2015");
@@ -17,7 +17,7 @@
             obj.setFl_user_name(userName[1]);
             obj.setFl_mail(mail[1]);
             obj.setFl_password_changed_count(Integer.parseInt(countChangePassword[1]));
-            if(new userControl().userStatusKeyRequestNewPassword(obj.getFl_user_name(), obj.getFl_password_changed_count())){
+            if(new UsersControl().userStatusKeyRequestNewPassword(obj.getFl_user_name(), obj.getFl_password_changed_count())){
                 statusResetPassword="expired";
             }
         }else{

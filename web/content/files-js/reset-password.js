@@ -40,7 +40,7 @@ $(document).ready(function (){
                     $.ajax({
                         async: true,
                         type: "POST",
-                        url: "userServices",
+                        url: "UsersService",
                         data: form.serialize(),
                         dataType: 'json',
                         beforeSend: function (xhr) {
